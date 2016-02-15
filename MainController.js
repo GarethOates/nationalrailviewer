@@ -20,7 +20,7 @@
         var onError = function ($error) {
             if(!isErrorRaised) {
                 vm.error = 'Could not load data for "' + vm.city + '"';
-                 toastr.error(vm.error);
+                 toastr.error(vm.error, 'Error');
                  isErrorRaised = true;
             }              
         };

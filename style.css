@@ -1,8 +1,7 @@
 /* Styles go here */
 
 caption {
-  font-size: 14pt; 
-  color: #0D204A; 
+  font-size: 14pt;  
 }
 
 .table-striped>thead>tr>th {
@@ -11,8 +10,6 @@ caption {
 } 
 
 .delayed {
-  font-style: italic;
   font-weight: bold;
   color: #DD0000;
 }
- 
