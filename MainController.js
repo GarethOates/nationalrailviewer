@@ -18,11 +18,11 @@
 
         var isErrorRaised = false;
         var onError = function ($error) {
-            if(!isErrorRaised) {
+            if (!isErrorRaised) {
                 vm.error = 'Could not load data for "' + vm.city + '"';
-                 toastr.error(vm.error, 'Error');
-                 isErrorRaised = true;
-            }              
+                toastr.error(vm.error, 'Error');
+                isErrorRaised = true;
+            }
         };
 
         function GetData() {
@@ -32,9 +32,6 @@
 
         GetData();
 
-        $interval(function () {
-            GetData();
-        }, 60000);
+        $interval(GetData, 60000);
     }
-
 } ());
