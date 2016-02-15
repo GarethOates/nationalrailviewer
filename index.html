@@ -29,6 +29,7 @@
           <th>Destination</th>
           <th>Departs</th>
           <th>Estimated</th>
+          <th>Platform</th>
         </tr>
       </thead>
       <tbody>
@@ -37,6 +38,7 @@
           <td> {{ services.destination[0].locationName }} ({{ services.destination[0].crs }}) </td>
           <td> {{ services.std }}</td>
           <td> {{ services.etd }}</td>
+          <td> {{ services.platform }}</td>
         </tr>
       </tbody>
     </table>
@@ -49,6 +51,7 @@
           <th>Destination</th>
           <th>Departs</th>
           <th>Estimated</th>
+          <th>Platform</th>
         </tr>
       </thead>
       <tbody>
@@ -57,6 +60,7 @@
           <td> {{ sv.destination[0].locationName }} ({{ sv.destination[0].crs }}) </td>
           <td> {{ sv.sta }}</td>
           <td> {{ sv.eta }}</td>
+          <td> {{ sv.platform }}</td>
         </tr>
       </tbody>
     </table>
