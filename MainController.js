@@ -17,13 +17,16 @@
     var onError = function($error) {
       vm.error = "Could not fetch the data!";
     };
+    
+    function GetData() {
+        NationalRail.getDepartures().then(onGetDeparturesComplete, onError);
+        NationalRail.getArrivals().then(onGetArrivalsComplete, onError);
+    }
 
-    NationalRail.getDepartures().then(onGetDeparturesComplete, onError);
-    NationalRail.getArrivals().then(onGetArrivalsComplete, onError);
+    GetData();
 
     $interval(function() {
-     NationalRail.getDepartures().then(onGetDeparturesComplete, onError);
-      NationalRail.getArrivals().then(onGetArrivalsComplete, onError);
+        GetData();
     }, 60000);
   }
 
