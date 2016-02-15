@@ -5,9 +5,8 @@
   function MainController(NationalRail, $interval) {
 
       var vm = this;
-      vm.error = "TEST!";
 
-    var onGetDeparturesComplete = function(data) {
+      var onGetDeparturesComplete = function (data) {
       vm.departures = data;
     };
 
