@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="nationalRailViewer">
+
+<head>
+  <link data-require="bootstrap-css@3.3.6" data-semver="3.3.6" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" />
+  <script data-require="angularjs@1.4.8" data-semver="1.4.8" src="https://code.angularjs.org/1.4.8/angular.js"></script>
+  <script data-require="jquery@*" data-semver="2.2.0" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script data-require="bootstrap@3.3.6" data-semver="3.3.6" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+  <!-- Angular -->
+  <script src="app.module.js"></script>
+  <script src="MainController.js"></script>
+  <script src="nationalrail.service.js"></script>
+</head>
+
+<body ng-controller="MainController as vm" class="container">
+ 
+  <div>
+    <h1>Aberdeen</h1>
+    <table class="table table-striped">
+      <caption>Departures</caption>
+      <thead>
+        <tr>
+          <th>Origin</th>
+          <th>Destination</th>
+          <th>Departs</th>
+          <th>Estimated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="services in vm.departures.trainServices">
+          <td> {{ services.origin[0].locationName }} ({{ services.origin[0].crs }}) </td>
+          <td> {{ services.destination[0].locationName }} ({{ services.destination[0].crs }}) </td>
+          <td> {{ services.std }}</td>
+          <td> {{ services.etd }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table table-striped">
+      <caption>Arrivals</caption>
+      <thead>
+        <tr>
+          <th>Origin</th>
+          <th>Destination</th>
+          <th>Departs</th>
+          <th>Estimated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="sv in vm.arrivals.trainServices">
+          <td> {{ sv.origin[0].locationName }} ({{ sv.origin[0].crs }}) </td>
+          <td> {{ sv.destination[0].locationName }} ({{ sv.destination[0].crs }}) </td>
+          <td> {{ sv.sta }}</td>
+          <td> {{ sv.eta }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <footer class="footer">
+     Last Updated: {{ vm.departures.generatedAt | date: 'dd/MM/yyyy HH:mm:ss' }}
+  </footer>
+</body>
+
+</html>
