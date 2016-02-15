@@ -1,35 +1,40 @@
-(function() {
+(function () {
 
-  angular.module("nationalRailViewer").controller("MainController", MainController);
+    angular.module("nationalRailViewer").controller("MainController", MainController);
 
-  function MainController(NationalRail, $interval, $routeParams, toastr) {
+    function MainController(NationalRail, $interval, $routeParams, toastr) {
 
-      var vm = this;
-      
-      vm.city = $routeParams.City;
+        var vm = this;
 
-      var onGetDeparturesComplete = function (data) {
-      vm.departures = data;
-    };
+        vm.city = $routeParams.City;
 
-    var onGetArrivalsComplete = function(data) {
-      vm.arrivals = data;
-    };
+        var onGetDeparturesComplete = function (data) {
+            vm.departures = data;
+        };
 
-    var onError = function($error) {
-        toastr.error('Could not load data for ' + vm.city);
-    };
-    
-    function GetData() {
-        NationalRail.getDepartures(vm.city).then(onGetDeparturesComplete, onError);
-        NationalRail.getArrivals(vm.city).then(onGetArrivalsComplete, onError);
+        var onGetArrivalsComplete = function (data) {
+            vm.arrivals = data;
+        };
+
+        var isErrorRaised = false;
+        var onError = function ($error) {
+            if(!isErrorRaised) {
+                vm.error = 'Could not load data for "' + vm.city + '"';
+                 toastr.error(vm.error);
+                 isErrorRaised = true;
+            }              
+        };
+
+        function GetData() {
+            NationalRail.getDepartures(vm.city).then(onGetDeparturesComplete, onError);
+            NationalRail.getArrivals(vm.city).then(onGetArrivalsComplete, onError);
+        }
+
+        GetData();
+
+        $interval(function () {
+            GetData();
+        }, 60000);
     }
 
-    GetData();
-
-    $interval(function() {
-        GetData();
-    }, 60000);
-  }
-
-}());
+} ());
