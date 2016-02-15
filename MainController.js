@@ -4,7 +4,8 @@
 
   function MainController(NationalRail, $interval) {
 
-    var vm = this;
+      var vm = this;
+      vm.error = "TEST!";
 
     var onGetDeparturesComplete = function(data) {
       vm.departures = data;
@@ -15,7 +16,7 @@
     };
 
     var onError = function($error) {
-      vm.error = "Could not fetch the data";
+      vm.error = "Could not fetch the data!";
     };
 
     NationalRail.getDepartures().then(onGetDeparturesComplete, onError);
