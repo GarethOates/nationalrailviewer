@@ -25,5 +25,9 @@ caption {
     color: #ffffff;
 } 
 
- 
+.delayed {
+  font-style: italic;
+  font-weight: bold;
+  color: #DD0000;
+}
  
