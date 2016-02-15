@@ -2,9 +2,11 @@
 
   angular.module("nationalRailViewer").controller("MainController", MainController);
 
-  function MainController(NationalRail, $interval) {
+  function MainController(NationalRail, $interval, $routeParams, toastr) {
 
       var vm = this;
+      
+      vm.city = $routeParams.City;
 
       var onGetDeparturesComplete = function (data) {
       vm.departures = data;
@@ -15,12 +17,12 @@
     };
 
     var onError = function($error) {
-      vm.error = "Could not fetch the data!";
+        toastr.error('Could not load data for ' + vm.city);
     };
     
     function GetData() {
-        NationalRail.getDepartures().then(onGetDeparturesComplete, onError);
-        NationalRail.getArrivals().then(onGetArrivalsComplete, onError);
+        NationalRail.getDepartures(vm.city).then(onGetDeparturesComplete, onError);
+        NationalRail.getArrivals(vm.city).then(onGetArrivalsComplete, onError);
     }
 
     GetData();

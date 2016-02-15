@@ -1,3 +1,3 @@
 (function() {
-angular.module("nationalRailViewer", []);
+angular.module("nationalRailViewer", ["ngRoute", "toastr"]);
 }());

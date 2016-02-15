@@ -1,23 +1,8 @@
 /* Styles go here */
 
-.heading {
-    color: #0D204A;
-}
-
 caption {
-  font-size: 14pt;  
-}
-
-.station {
-  width: 240px;
-}
-
-.destination {
-  width: 500px;
-}
-
-.departs, .estimated .platform {
-  width: 130px;
+  font-size: 14pt; 
+  color: #0D204A; 
 }
 
 .table-striped>thead>tr>th {

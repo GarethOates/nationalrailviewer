@@ -4,15 +4,15 @@
 
   function nationalRail($http) {
 
-    var getDepartures = function() {
-      return $http.get("http://nationalrail.azurewebsites.net/departures/aberdeen")
+    var getDepartures = function(city) {
+      return $http.get("http://nationalrail.azurewebsites.net/departures/" + city)
         .then(function(response) {
           return response.data;
         });
     };
 
-    var getArrivals = function() {
-      return $http.get("http://nationalrail.azurewebsites.net/arrivals/aberdeen")
+    var getArrivals = function(city) {
+      return $http.get("http://nationalrail.azurewebsites.net/arrivals/" + city)
         .then(function(response) {
           return response.data;
         });
