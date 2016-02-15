@@ -1,4 +1,9 @@
 /* Styles go here */
+
+.heading {
+    color: #0D204A;
+}
+
 caption {
   font-size: 14pt;  
 }
@@ -15,10 +20,10 @@ caption {
   width: 130px;
 }
 
-.table-striped>tbody>tr:nth-child(odd)>td, 
-.table-striped>tbody>tr:nth-child(odd)>th {
-   background-color: #0085CF;
-   -webkit-text-stroke-color: #FFFFFF;
- }
+.table-striped>thead>tr>th {
+    background-color: #0085CF;
+    color: #ffffff;
+} 
+
  
  
