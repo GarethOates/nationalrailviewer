@@ -1,0 +1,19 @@
+{
+  "name": "nationalrailviewer",
+  "version": "1.0.0",
+  "description": "Shows Departure and Arrival times for Aberdeen train station.",
+  "main": "app.module.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://git@bitbucket.org/Goatie/nationalrailviewer.git"
+  },
+  "keywords": [
+    "nationalrail"
+  ],
+  "author": "Gareth Oates",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/Goatie/nationalrailviewer#readme"
+}
