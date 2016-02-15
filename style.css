@@ -1,2 +1,24 @@
 /* Styles go here */
+caption {
+  font-size: 14pt;  
+}
 
+.station {
+  width: 240px;
+}
+
+.destination {
+  width: 500px;
+}
+
+.departs, .estimated .platform {
+  width: 130px;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: #0085CF;
+   -webkit-text-stroke-color: #FFFFFF;
+ }
+ 
+ 

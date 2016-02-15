@@ -17,7 +17,7 @@
 <body ng-controller="MainController as vm" class="container">
  
   <div>
-    <h1>Aberdeen</h1>
+    <h1>Live Departure/Arrival board for <span class="strong">Aberdeen</span></h1>
     
     <div class="warning" ng-show="vm.error">{{ vm.error }}</div>
     
@@ -25,11 +25,11 @@
       <caption>Departures</caption>
       <thead>
         <tr>
-          <th>From</th>
-          <th>To</th>
-          <th>Departs</th>
-          <th>Estimated</th>
-          <th>Platform</th>
+          <th class="station">From</th>
+          <th class="destination">To</th>
+          <th class="departs">Departs</th>
+          <th class="estimated">Estimated</th>
+          <th class="platform">Platform</th>
         </tr>
       </thead>
       <tbody>
@@ -47,11 +47,11 @@
       <caption>Arrivals</caption>
       <thead>
         <tr>
-          <th>From</th>
-          <th>To</th>
-          <th>Departs</th>
-          <th>Estimated</th>
-          <th>Platform</th>
+          <th class="station">From</th>
+          <th class="destination">To</th>
+          <th class="departs">Departs</th>
+          <th class="estimated">Estimated</th>
+          <th class="platform">Platform</th>
         </tr>
       </thead>
       <tbody>
