@@ -3,7 +3,7 @@
 
     function configure($routeProvider) {
         $routeProvider.when("/:City", {
-            templateUrl: "main.html",
+            templateUrl: "public/views/main.html",
             controller: "MainController",
             controllerAs: "vm"
         }).otherwise({

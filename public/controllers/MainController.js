@@ -21,7 +21,7 @@
             if (!isErrorRaised) {
                 vm.error = 'Could not load data for "' + vm.city + '"';
                 toastr.error(vm.error, 'Error');
-                isErrorRaised = true;
+                isErrorRaised = !isErrorRaised;
             }
         };
 
