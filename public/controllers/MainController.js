@@ -5,8 +5,12 @@
     function MainController(NationalRail, $interval, $routeParams, toastr) {
 
         var vm = this;
-
         vm.city = $routeParams.City;
+
+        function GetData() {
+            NationalRail.getDepartures(vm.city).then(onGetDeparturesComplete, onError);
+            NationalRail.getArrivals(vm.city).then(onGetArrivalsComplete, onError);
+        }
 
         var onGetDeparturesComplete = function (data) {
             vm.departures = data;
@@ -21,17 +25,11 @@
             if (!isErrorRaised) {
                 vm.error = 'Could not load data for "' + vm.city + '"';
                 toastr.error(vm.error, 'Error');
-                isErrorRaised = true;
+                isErrorRaised = !isErrorRaised;
             }
         };
 
-        function GetData() {
-            NationalRail.getDepartures(vm.city).then(onGetDeparturesComplete, onError);
-            NationalRail.getArrivals(vm.city).then(onGetArrivalsComplete, onError);
-        }
-
         GetData();
-
         $interval(GetData, 60000);
     }
 } ());
