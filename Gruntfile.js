@@ -10,7 +10,7 @@ module.exports = function (grunt) {
             },
             build: {
                 src: 'angular/**/*.js',
-                dest: 'build/<%= pkg.name %>.min.js'
+                dest: 'angular/<%= pkg.name %>.min.js'
             }
         }
     });
