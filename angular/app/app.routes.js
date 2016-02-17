@@ -1,1 +1,13 @@
-!function(){function e(e){e.when("/:City",{templateUrl:"angular/views/main.html",controller:"MainController",controllerAs:"vm"}).otherwise({redirectTo:"/Aberdeen"})}e.$inject=["$routeProvider"],angular.module("nationalRailViewer").config(e)}();
+(function () {
+    function configure($routeProvider) {
+        $routeProvider.when("/:City", {
+            templateUrl: "angular/views/main.html",
+            controller: "MainController",
+            controllerAs: "vm"
+        }).otherwise({
+            redirectTo: "/Aberdeen"
+        });
+    }
+    configure.$inject = ['$routeProvider'];
+    angular.module("nationalRailViewer").config(configure);
+} ());

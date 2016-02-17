@@ -1,1 +1,26 @@
-!function(){function t(t){var n=function(n){return t.get("http://nationalrail.azurewebsites.net/departures/"+n).then(function(t){return t.data})},a=function(n){return t.get("http://nationalrail.azurewebsites.net/arrivals/"+n).then(function(t){return t.data})};return{getDepartures:n,getArrivals:a}}t.$inject=["$http"],angular.module("nationalRailViewer").factory("NationalRail",t)}();
+(function () {
+    function nationalRail($http) {
+
+        var getDepartures = function (city) {
+            return $http.get("http://nationalrail.azurewebsites.net/departures/" + city)
+                .then(function (response) {
+                    return response.data;
+                });
+        };
+
+        var getArrivals = function (city) {
+            return $http.get("http://nationalrail.azurewebsites.net/arrivals/" + city)
+                .then(function (response) {
+                    return response.data;
+                });
+        };
+
+        return {
+            getDepartures: getDepartures,
+            getArrivals: getArrivals
+        };
+    };
+
+    nationalRail.$inject = ['$http'];
+    angular.module("nationalRailViewer").factory("NationalRail", nationalRail);
+} ());
