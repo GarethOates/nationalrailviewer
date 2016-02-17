@@ -12,7 +12,8 @@ gulp.task('clean:dist', function () {
 })
 
 gulp.task('minify', function () {
-    return gulp.src(paths.scripts).pipe(concat('nationalrailviewer.min.js'))
+    return gulp.src(paths.scripts)
+        .pipe(concat('nationalrailviewer.min.js'))
         .pipe(uglify('nationalrailviewer.min.js', {
         mangle: true,
     }))
