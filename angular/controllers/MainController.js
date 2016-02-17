@@ -1,7 +1,4 @@
 (function () {
-
-    angular.module("nationalRailViewer").controller("MainController", MainController);
-
     function MainController(NationalRail, $interval, $routeParams, toastr) {
 
         var vm = this;
@@ -32,4 +29,8 @@
         GetData();
         $interval(GetData, 60000);
     }
+
+    MainController.$inject = ['NationalRail', '$interval', '$routeParams', 'toastr'];
+    angular.module("nationalRailViewer").controller("MainController", MainController);
+
 } ());
