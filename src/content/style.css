@@ -1,0 +1,15 @@
+/* Styles go here */
+
+caption {
+  font-size: 14pt;  
+}
+
+.table-striped>thead>tr>th {
+    background-color: #0085CF;
+    color: #ffffff;
+} 
+
+.delayed {
+  font-weight: bold;
+  color: #DD0000;
+}

@@ -1,7 +1,7 @@
 (function () {
     function configure($routeProvider) {
         $routeProvider.when("/:City", {
-            templateUrl: "angular/views/main.html",
+            templateUrl: "build/views/main.html",
             controller: "MainController",
             controllerAs: "vm"
         }).otherwise({
