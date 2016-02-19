@@ -1,4 +1,5 @@
 (function () {
+    'use-strict';
     function MainController(NationalRail, $interval, $routeParams, toastr) {
 
         var vm = this;
