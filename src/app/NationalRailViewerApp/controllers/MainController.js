@@ -21,7 +21,7 @@
         var isErrorRaised = false;
         var onError = function ($error) {
             if (!isErrorRaised) {
-                vm.error = 'Could not load data for "' + vm.city + '"';
+                vm.error = 'Could not load the data for "' + vm.city + '"';
                 toastr.error(vm.error, 'Error');
                 isErrorRaised = !isErrorRaised;
             }
