@@ -2,29 +2,38 @@ var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var del = require('del');
-var runseq = require('run-sequence');
+//var ts = require('gulp-typescript');
 
 var paths = {
-    scripts: ['src/**/*.js'],
+    scripts: 'src/**/*.js',
     css: 'src/content/*.css',
     views: 'src/app/NationalRailViewerApp/views/*.html',
     dest: 'build',
-    destViews: 'build/views'
+    destViews: 'build/views',
 }
 
-gulp.task('move:css', function () {
+/*gulp.task('transpile:typescript', function() {
+    return gulp.src(paths.typescripts)
+            .pipe(ts(), {
+                noImplicitAny: true,
+                target: 'ES5'
+             })
+            .pipe(gulp.dest(paths.destjs));
+})*/
+
+gulp.task('move:css', ['clean:build'], function () {
     return gulp.src(paths.css).pipe(gulp.dest(paths.dest));
 })
 
-gulp.task('move:views', function() {
+gulp.task('move:views', ['clean:build'], function() {
     return gulp.src(paths.views).pipe(gulp.dest(paths.destViews));
 })
 
 gulp.task('clean:build', function () {
-    return del.sync('build');
+    return del.sync(paths.dest);
 })
 
-gulp.task('minify', function () {
+gulp.task('minify', ['move:css', 'move:views'], function () {
     return gulp.src(paths.scripts)
         .pipe(concat('nationalrailviewer.min.js'))
         .pipe(uglify('nationalrailviewer.min.js', {
@@ -33,6 +42,4 @@ gulp.task('minify', function () {
         .pipe(gulp.dest(paths.dest));
 });
 
-gulp.task('default', function () {
-    runseq('default', ['clean:build', 'move:views', 'move:css', 'minify']);
-});
+gulp.task('default', ['clean:build', 'move:css', 'move:views', 'minify']);

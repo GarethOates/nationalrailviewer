@@ -1,8 +1,10 @@
+/// <reference path="../../../../typings/tsd.d.ts" />
+
 (function () {
     'use-strict';
     function MainController(NationalRail, $interval, $routeParams, toastr) {
 
-        var vm = this;
+        var vm = this;                
         vm.city = $routeParams.City;
 
         function GetData() {
