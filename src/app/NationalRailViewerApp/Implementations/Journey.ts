@@ -1,8 +1,8 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
 
-module App.Services {
+namespace app.Journey {
 
-    export class Journey implements IJourney {
+    export class Journey implements app.Interface.IJourney {
         public locationName: string;
         public crs: string;
         public via: string;

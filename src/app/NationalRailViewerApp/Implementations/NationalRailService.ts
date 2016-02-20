@@ -1,8 +1,8 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
 /// <reference path="../../../../typings/app.d.ts" />
 
-module App.Services {
-    export class NationalRailService implements INationalRailService {
+namespace app.NationalRailService {
+    export class NationalRailService implements app.Interface.INationalRailService {
 
         http: ng.IHttpService;
 
@@ -11,14 +11,14 @@ module App.Services {
             this.http = $http;
         }
 
-        getDepartures(city: String): ng.IPromise<IQueryResult> {
+        getDepartures(city: String): ng.IPromise<app.Interface.IQueryResult> {
             return this.http.get("http://nationalrail.azurewebsites.net/departures/" + city)
                 .then(function(response) {
                     return response.data;
                 });
         }
 
-        getArrivals(city: String): ng.IPromise<IQueryResult> {
+        getArrivals(city: String): ng.IPromise<app.Interface.IQueryResult> {
             return this.http.get("http://nationalrail.azurewebsites.net/arrivals/" + city)
                 .then(function(response) {
                     return response.data;

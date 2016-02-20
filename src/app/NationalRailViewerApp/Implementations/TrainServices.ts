@@ -1,11 +1,11 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
 /// <reference path="../../../../typings/app.d.ts" />
 
-module App.Services {
+namespace app.TrainServices {
 
-    export class TrainServices implements ITrainServices {
-        public origin: IJourney[];
-        public destination: IJourney[];
+    export class TrainServices implements app.Interface.ITrainServices {
+        public origin: app.Interface.IJourney[];
+        public destination: app.Interface.IJourney[];
         public generatedAt: Date;
         currentOrigins: string;
         currentDestinations: string;

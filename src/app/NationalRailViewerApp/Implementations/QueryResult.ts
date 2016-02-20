@@ -1,9 +1,9 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
 /// <reference path="../../../../typings/app.d.ts" />
 
-module App.Services {
+namespace app.QueryResult {
     'use-strict';
-    export class QueryResult implements IQueryResult {       
-        constructor(public trainServices: ITrainServices) {}
+    export class QueryResult implements app.Interface.IQueryResult {       
+        constructor(public trainServices: app.Interface.ITrainServices) {}
     }
 }

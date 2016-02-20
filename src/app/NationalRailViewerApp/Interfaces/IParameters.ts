@@ -1,6 +1,6 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
 
-module App.Services {
+namespace app.Interface {
     'use-strict';
  
     export interface IParameters extends ng.route.IRouteParamsService {

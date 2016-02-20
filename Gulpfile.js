@@ -4,6 +4,7 @@ var concat = require('gulp-concat');
 var del = require('del');
 var ts = require('gulp-typescript');
 var sourcemaps = require('gulp-sourcemaps');
+var print = require('gulp-print');
 
 var paths = {
     scripts: 'src/**/*.ts',
@@ -13,11 +14,12 @@ var paths = {
     destViews: 'build/views',
 }
 
-gulp.task('scripts', function () {
+gulp.task('scripts', ['clean:build'], function () {
     var tsResult = gulp.src(paths.scripts)
-        .pipe(sourcemaps.init()) // This means sourcemaps will be generated
+        .pipe(sourcemaps.init())
         .pipe(ts({
             sortOutput: true,
+            declaration: true,
             target: 'ES5'
         }));
 

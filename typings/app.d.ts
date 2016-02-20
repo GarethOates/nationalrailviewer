@@ -6,6 +6,4 @@
 // Implementations
 /// <reference path="../src/app/NationalRailViewerApp/Implementations/QueryResult.ts" />
 /// <reference path="../src/app/NationalRailViewerApp/Implementations/Journey.ts" />
-
-// Services
-/// <reference path="../src/app/NationalRailViewerApp/services/NationalRailService.ts" />
+/// <reference path="../src/app/NationalRailViewerApp/Implementations/NationalRailService.ts" />
