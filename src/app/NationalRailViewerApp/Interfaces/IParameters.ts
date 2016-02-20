@@ -1,10 +1,5 @@
-/// <reference path="../../../../typings/tsd.d.ts" />
-
-namespace app.Interface {
-    'use-strict';
- 
+namespace Interfaces {
     export interface IParameters extends ng.route.IRouteParamsService {
-       City: string;
+        City: string;
     }
-    
 }

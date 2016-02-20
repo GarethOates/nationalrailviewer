@@ -1,11 +1,7 @@
-/// <reference path="../../../../typings/tsd.d.ts" />
-/// <reference path="../../../../typings/app.d.ts" />
-
-namespace app.TrainServices {
-
-    export class TrainServices implements app.Interface.ITrainServices {
-        public origin: app.Interface.IJourney[];
-        public destination: app.Interface.IJourney[];
+namespace Interfaces {
+    export class TrainServices implements ITrainServices {
+        public origin: IJourney[];
+        public destination: IJourney[];
         public generatedAt: Date;
         currentOrigins: string;
         currentDestinations: string;
@@ -20,5 +16,4 @@ namespace app.TrainServices {
         serviceID: string;
         adhocAlerts: string;
     }
-
 }

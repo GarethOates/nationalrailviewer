@@ -1,6 +1,4 @@
-/// <reference path="../../typings/tsd.d.ts" />
-
-namespace app.Config {
+namespace routes {
     function configure($routeProvider: ng.route.IRouteProvider) {
         $routeProvider.when("/:City", {
             templateUrl: "build/views/main.html",

@@ -1,8 +1,7 @@
-/// <reference path="../../../../typings/tsd.d.ts" />
 /// <reference path="../../../../typings/app.d.ts" />
-
-namespace app.NationalRailService {
-    export class NationalRailService implements app.Interface.INationalRailService {
+/// <reference path="../../../../typings/tsd.d.ts" />
+namespace Interfaces {
+    export class NationalRailService implements INationalRailService {
 
         http: ng.IHttpService;
 
@@ -11,14 +10,14 @@ namespace app.NationalRailService {
             this.http = $http;
         }
 
-        getDepartures(city: String): ng.IPromise<app.Interface.IQueryResult> {
+        getDepartures(city: String): ng.IPromise<IQueryResult> {
             return this.http.get("http://nationalrail.azurewebsites.net/departures/" + city)
                 .then(function(response) {
                     return response.data;
                 });
         }
 
-        getArrivals(city: String): ng.IPromise<app.Interface.IQueryResult> {
+        getArrivals(city: String): ng.IPromise<IQueryResult> {
             return this.http.get("http://nationalrail.azurewebsites.net/arrivals/" + city)
                 .then(function(response) {
                     return response.data;
@@ -28,4 +27,5 @@ namespace app.NationalRailService {
 
     angular.module('nationalRailViewer')
         .factory('NationalRail', ['$http', ($http) => new NationalRailService($http)]);
+
 }
