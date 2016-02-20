@@ -1,7 +1,7 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
 /// <reference path="../../../../typings/app.d.ts" />
 
-namespace App.Services {
+module App.Services {
     'use strict';
 
     export class MainController {
@@ -39,7 +39,7 @@ namespace App.Services {
         }         
     }
     
-    var appModule = angular.module('NationalRailViewer')
+    var appModule = angular.module('nationalRailViewer')
     appModule.controller('MainController', ['NationalRail', '$interval', '$routeParams', 'toastr', 
     (NationalRail, $interval, $routeParams, toastr) =>  new App.Services.MainController(NationalRail, $interval, $routeParams, toastr)]);
 

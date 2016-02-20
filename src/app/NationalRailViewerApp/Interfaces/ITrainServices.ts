@@ -1,7 +1,7 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
 /// <reference path="../../../../typings/app.d.ts" />
 
-namespace App.Services {
+module App.Services {
     'use-strict';
     
     export interface IJourney {
