@@ -2,10 +2,10 @@ var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var del = require('del');
-//var ts = require('gulp-typescript');
+var ts = require('gulp-typescript');
 
 var paths = {
-    scripts: 'src/**/*.js',
+    scripts: 'src/**/*.ts',
     css: 'src/content/*.css',
     views: 'src/app/NationalRailViewerApp/views/*.html',
     dest: 'build',
@@ -35,10 +35,14 @@ gulp.task('clean:build', function () {
 
 gulp.task('minify', ['move:css', 'move:views'], function () {
     return gulp.src(paths.scripts)
-        .pipe(concat('nationalrailviewer.min.js'))
-        .pipe(uglify('nationalrailviewer.min.js', {
-            mangle: true,
-        }))
+        .pipe(concat('nationalrailviewer.min.ts'))
+        .pipe(ts(), {
+            noImplicitAny: true,
+            target: 'ES5'
+        })
+        // .pipe(uglify('nationalrailviewer.min.js', {
+        //     mangle: true,
+        // }))
         .pipe(gulp.dest(paths.dest));
 });
 
