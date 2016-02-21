@@ -1,37 +1,35 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
-/// <reference path="../../../../typings/app.d.ts" />
-
-namespace Interfaces {
+namespace app.controllers {
     export class MainController {
 
-        city: string;
-        departures: IQueryResult;
-        arrivals: IQueryResult;
+        public city: string;
+        public departures: Interfaces.IQueryResult;
+        public arrivals: Interfaces.IQueryResult;
 
         static $inject: Array<string> = ['NationalRail', '$interval', '$routeParams', 'toastr'];
-        constructor(public NationalRail: INationalRailService, public $interval: ng.IIntervalService, public $routeParams: IParameters, public toastr: Toastr) {
+        constructor(public NationalRail: app.Interfaces.INationalRailService, public $interval: ng.IIntervalService, public $routeParams: Interfaces.IParameters, public toastr: Toastr) {
             this.city = $routeParams.City;
             this.GetData();
             this.$interval(this.GetData, 60000);
         };
 
-        onGetDeparturesComplete = function(data: IQueryResult) {
+        onGetDeparturesComplete(data: app.Interfaces.IQueryResult): void {
             this.departures = data;
         };
 
-        onGetArrivalsComplete = function(data: IQueryResult) {
+        onGetArrivalsComplete(data: app.Interfaces.IQueryResult): void {
             this.arrivals = data;
         };
 
         isErrorRaised: boolean = false;
-        onError($error) {
+        onError($error: string) {
             if (!this.isErrorRaised) {
-                toastr.error('Could not load data for "' + this.city + '"', 'Error');
+                toastr.error("Could not load data for '" + this.city + "'!", 'Error');
                 this.isErrorRaised = !this.isErrorRaised;
             }
         };
 
-        public GetData = function() {
+        GetData(): void {
             this.NationalRail.getDepartures(this.city).then(this.onGetDeparturesComplete, this.onError);
             this.NationalRail.getArrivals(this.city).then(this.onGetArrivalsComplete, this.onError);
         }
@@ -39,5 +37,5 @@ namespace Interfaces {
 
     var appModule = angular.module('nationalRailViewer')
     appModule.controller('MainController', ['NationalRail', '$interval', '$routeParams', 'toastr',
-        (NationalRail, $interval, $routeParams, toastr) => new MainController(NationalRail, $interval, $routeParams, toastr)]);
+        (NationalRail: app.Interfaces.INationalRailService, $interval: ng.IIntervalService, $routeParams: Interfaces.IParameters, toastr: Toastr) => new MainController(NationalRail, $interval, $routeParams, toastr)]);
 }

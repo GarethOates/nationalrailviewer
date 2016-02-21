@@ -1,5 +1,5 @@
-namespace Interfaces {
-    export class QueryResult implements IQueryResult {
-        constructor(public trainServices: ITrainServices) { }
+namespace app.dataobjects {
+    export class QueryResult implements app.Interfaces.IQueryResult {
+        constructor(public trainServices: app.Interfaces.ITrainServices) { }
     }
 }

@@ -9,3 +9,4 @@
 /// <reference path="../src/app/NationalRailViewerApp/Implementations/QueryResult.ts" />
 /// <reference path="../src/app/NationalRailViewerApp/Implementations/Journey.ts" />
 /// <reference path="../src/app/NationalRailViewerApp/Implementations/NationalRailService.ts" />
+/// <reference path="../src/app/NationalRailViewerApp/Implementations/TrainServices.ts" />

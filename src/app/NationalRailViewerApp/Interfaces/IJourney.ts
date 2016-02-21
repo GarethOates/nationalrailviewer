@@ -1,4 +1,4 @@
-namespace Interfaces {
+namespace app.Interfaces {
     export interface IJourney {
         locationName: string;
         crs: string;

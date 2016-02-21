@@ -14,6 +14,16 @@ var paths = {
     destViews: 'build/views',
 };
 
+gulp.task('compile', ['clean:build'], function () {
+        return gulp.src('src/**/*.ts')
+            .pipe(ts({
+                "target": "es5",
+                "noImplicitAny": true,
+                "outFile": "output.js"
+            }))//.pipe(uglify("output.js"))
+            .pipe(gulp.dest(paths.dest));
+});
+
 gulp.task('move:css', ['clean:build'], function () {
     return gulp.src(paths.css).pipe(gulp.dest(paths.dest));
 });
@@ -26,4 +36,4 @@ gulp.task('clean:build', function () {
     return del.sync(paths.dest);
 });
 
-gulp.task('default', ['clean:build', 'move:css', 'move:views']);
+gulp.task('default', ['clean:build', 'compile', 'move:css', 'move:views']);

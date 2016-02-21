@@ -1,4 +1,4 @@
-namespace Interfaces {
+namespace app.Interfaces {
     export interface ITrainServices {
         origin: IJourney[];
         destination: IJourney[];

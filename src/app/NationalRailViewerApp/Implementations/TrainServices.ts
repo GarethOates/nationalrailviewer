@@ -1,7 +1,7 @@
-namespace Interfaces {
-    export class TrainServices implements ITrainServices {
-        public origin: IJourney[];
-        public destination: IJourney[];
+namespace app.dataobjects {
+    export class TrainServices implements app.Interfaces.ITrainServices {
+        public origin: app.Interfaces.IJourney[];
+        public destination: app.Interfaces.IJourney[];
         public generatedAt: Date;
         currentOrigins: string;
         currentDestinations: string;

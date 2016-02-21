@@ -1,4 +1,4 @@
-namespace routes {
+namespace app.routes {
     function configure($routeProvider: ng.route.IRouteProvider) {
         $routeProvider.when("/:City", {
             templateUrl: "build/views/main.html",
