@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var cssnano = require('gulp-cssnano');
 var ts = require('gulp-typescript');
+var htmlmin = require('gulp-htmlmin');
 
 var paths = {
     scripts: 'src/app/**/*.ts',
@@ -25,7 +26,7 @@ gulp.task('move:css', function () {
 });
 
 gulp.task('move:views', function () {
-    return gulp.src(paths.views).pipe(gulp.dest(paths.dest));
+    return gulp.src(paths.html).pipe(htmlmin({collapseWhitespace: true})).pipe(gulp.dest(paths.dest));
 });
 
 gulp.task('default', ['compile', 'move:css', 'move:views']);
