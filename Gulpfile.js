@@ -1,15 +1,14 @@
 var gulp = require('gulp');
 var uglify = require('gulp-uglify');
+var cssnano = require('gulp-cssnano');
 var concat = require('gulp-concat');
-var del = require('del');
 var ts = require('gulp-typescript');
-var sourcemaps = require('gulp-sourcemaps');
-var print = require('gulp-print');
+var htmlmin = require('gulp-htmlmin');
 
 var paths = {
     scripts: 'src/**/*.ts',
     css: 'src/content/*.css',
-    views: 'src/app/NationalRailViewerApp/views/*.html',
+    html: 'src/content/*.html',
     dest: 'public'
 };
 
@@ -24,15 +23,11 @@ gulp.task('compile', function () {
 });
 
 gulp.task('move:css', function () {
-    return gulp.src(paths.css).pipe(gulp.dest(paths.dest));
+    return gulp.src(paths.css).pipe(cssnano()).pipe(gulp.dest(paths.dest));
 });
 
 gulp.task('move:views', function () {
-    return gulp.src(paths.views).pipe(gulp.dest(paths.dest));
+    return gulp.src(paths.views).pipe(htmlmin({collapseWhitespace: true})).pipe(gulp.dest(paths.dest));
 });
-
-// gulp.task('clean:build', function () {
-//     return del.sync(paths.dest);
-// });
 
 gulp.task('default', ['compile', 'move:css', 'move:views']);
