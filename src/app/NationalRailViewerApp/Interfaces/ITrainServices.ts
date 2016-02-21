@@ -7,6 +7,8 @@ namespace app.Interfaces {
         currentDestinations: string;
         sta: string;
         eta: string;
+        std: string;
+        etd: string;
         platform: string;
         operator: string;
         operatorCode: string;

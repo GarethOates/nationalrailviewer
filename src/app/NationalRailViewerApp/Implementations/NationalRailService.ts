@@ -9,14 +9,14 @@ namespace app.services {
             this.http = $http;
         }
 
-        getDepartures(city: String): ng.IPromise<app.Interfaces.IQueryResult> {
+        getDepartures(city: string): ng.IPromise<app.Interfaces.IQueryResult> {
             return this.http.get("http://nationalrail.azurewebsites.net/departures/" + city)
                 .then(function(response) {
                     return response.data;
                 });
         }
 
-        getArrivals(city: String): ng.IPromise<app.Interfaces.IQueryResult> {
+        getArrivals(city: string): ng.IPromise<app.Interfaces.IQueryResult> {
             return this.http.get("http://nationalrail.azurewebsites.net/arrivals/" + city)
                 .then(function(response) {
                     return response.data;
@@ -25,5 +25,5 @@ namespace app.services {
     }
 
     angular.module('nationalRailViewer')
-        .factory('NationalRail', ['$http', ($http: ng.IHttpService) => new NationalRailService($http)]);
+        .service('nationalRail', ['$http', ($http: ng.IHttpService) => new NationalRailService($http)]);
 }

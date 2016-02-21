@@ -2,6 +2,11 @@
     "compilerOptions": {
         "target": "es5",
         "noImplicitAny": true,
-        "outFile": "output.js"
-    }
+        "outFile": "output.js",
+        "removeComments": true
+    },
+    
+    "exclude": [
+        "node_modules"
+    ]
 }

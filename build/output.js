@@ -26,6 +26,7 @@ var app;
     (function (controllers) {
         var MainController = (function () {
             function MainController(NationalRail, $interval, $routeParams, toastr) {
+                var _this = this;
                 this.NationalRail = NationalRail;
                 this.$interval = $interval;
                 this.$routeParams = $routeParams;
@@ -33,17 +34,10 @@ var app;
                 this.isErrorRaised = false;
                 this.city = $routeParams.City;
                 this.GetData();
-                this.$interval(this.GetData, 60000);
+                this.$interval(function () {
+                    _this.GetData();
+                }, 60000);
             }
-            ;
-            MainController.prototype.onGetDeparturesComplete = function (data) {
-                this.departures = data;
-            };
-            ;
-            MainController.prototype.onGetArrivalsComplete = function (data) {
-                this.arrivals = data;
-            };
-            ;
             MainController.prototype.onError = function ($error) {
                 if (!this.isErrorRaised) {
                     toastr.error("Could not load data for '" + this.city + "'!", 'Error');
@@ -52,16 +46,39 @@ var app;
             };
             ;
             MainController.prototype.GetData = function () {
-                this.NationalRail.getDepartures(this.city).then(this.onGetDeparturesComplete, this.onError);
-                this.NationalRail.getArrivals(this.city).then(this.onGetArrivalsComplete, this.onError);
+                var _this = this;
+                this.NationalRail.getDepartures(this.city).then(function (data) {
+                    _this.departures = data;
+                }, this.onError);
+                this.NationalRail.getArrivals(this.city).then(function (data) {
+                    _this.arrivals = data;
+                }, this.onError);
             };
-            MainController.$inject = ['NationalRail', '$interval', '$routeParams', 'toastr'];
+            MainController.$inject = ['nationalRail', '$interval', '$routeParams', 'toastr'];
             return MainController;
         })();
         controllers.MainController = MainController;
         var appModule = angular.module('nationalRailViewer');
-        appModule.controller('MainController', ['NationalRail', '$interval', '$routeParams', 'toastr',
-            function (NationalRail, $interval, $routeParams, toastr) { return new MainController(NationalRail, $interval, $routeParams, toastr); }]);
+        appModule.controller('MainController', ['nationalRail', '$interval', '$routeParams', 'toastr',
+            function (nationalRail, $interval, $routeParams, toastr) { return new MainController(nationalRail, $interval, $routeParams, toastr); }]);
+    })(controllers = app.controllers || (app.controllers = {}));
+})(app || (app = {}));
+var app;
+(function (app) {
+    var controllers;
+    (function (controllers) {
+        'use strict';
+        var TestController = (function () {
+            function TestController(NationalRail) {
+                this.NationalRail = NationalRail;
+            }
+            TestController.$inject = ['NationalRail'];
+            return TestController;
+        })();
+        controllers.TestController = TestController;
+        angular
+            .module('nationalRailViewer')
+            .controller('TestController', TestController);
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
 var app;
@@ -102,7 +119,7 @@ var app;
         })();
         services.NationalRailService = NationalRailService;
         angular.module('nationalRailViewer')
-            .factory('NationalRail', ['$http', function ($http) { return new NationalRailService($http); }]);
+            .service('nationalRail', ['$http', function ($http) { return new NationalRailService($http); }]);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
 var app;
