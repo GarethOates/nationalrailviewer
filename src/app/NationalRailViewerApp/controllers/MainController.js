@@ -1,39 +1,41 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
+namespace app.controllers {
+    export class MainController {
 
-(function () {
-    'use-strict';
-    function MainController(NationalRail, $interval, $routeParams, toastr) {
+        public city: string;
+        public departures: Interfaces.IQueryResult;
+        public arrivals: Interfaces.IQueryResult;
 
-        var vm = this;                
-        vm.city = $routeParams.City;
-
-        function GetData() {
-            NationalRail.getDepartures(vm.city).then(onGetDeparturesComplete, onError);
-            NationalRail.getArrivals(vm.city).then(onGetArrivalsComplete, onError);
+        static $inject: Array<string> = ['nationalRail', '$interval', '$routeParams', 'toastr'];
+        constructor(private NationalRail: app.Interfaces.INationalRailService, private $interval: ng.IIntervalService, private $routeParams: Interfaces.IParameters, private toastr: Toastr) {
+            this.city = $routeParams.City;
+            this.GetData();
+            this.$interval(() => 
+            {
+                this.GetData();
+            }, 60000);
         }
 
-        var onGetDeparturesComplete = function (data) {
-            vm.departures = data;
-        };
-
-        var onGetArrivalsComplete = function (data) {
-            vm.arrivals = data;
-        };
-
-        var isErrorRaised = false;
-        var onError = function ($error) {
-            if (!isErrorRaised) {
-                vm.error = 'Could not load data for "' + vm.city + '"';
-                toastr.error(vm.error, 'Error');
-                isErrorRaised = !isErrorRaised;
+        isErrorRaised: boolean = false;
+        onError($error: string) {
+            if (!this.isErrorRaised) {
+                toastr.error("Could not load data for '" + this.city + "'!", 'Error');
+                this.isErrorRaised = !this.isErrorRaised;
             }
         };
 
-        GetData();
-        $interval(GetData, 60000);
+        GetData(): void {           
+            this.NationalRail.getDepartures(this.city).then((data: app.Interfaces.IQueryResult) => {
+                this.departures = data;
+            }, this.onError);
+            
+            this.NationalRail.getArrivals(this.city).then((data: app.Interfaces.IQueryResult) => {
+                this.arrivals = data;
+            }, this.onError);
+        }
     }
 
-    MainController.$inject = ['NationalRail', '$interval', '$routeParams', 'toastr'];
-    angular.module("nationalRailViewer").controller("MainController", MainController);
-
-} ());
+    var appModule = angular.module('nationalRailViewer')
+    appModule.controller('MainController', ['nationalRail', '$interval', '$routeParams', 'toastr',
+        (nationalRail: app.Interfaces.INationalRailService, $interval: ng.IIntervalService, $routeParams: Interfaces.IParameters, toastr: Toastr) => new MainController(nationalRail, $interval, $routeParams, toastr)]);
+}
