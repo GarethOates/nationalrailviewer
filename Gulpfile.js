@@ -8,6 +8,7 @@ var paths = {
     scripts: 'src/app/**/*.ts',
     css: 'src/content/*.css',
     html: 'src/content/*.html',
+    icon: '*.ico',
     dest: 'public'
 };
 
@@ -29,4 +30,8 @@ gulp.task('move:views', function () {
     return gulp.src(paths.html).pipe(htmlmin({collapseWhitespace: true})).pipe(gulp.dest(paths.dest));
 });
 
-gulp.task('default', ['compile', 'move:css', 'move:views']);
+gulp.task('move:icon', function () {
+    return gulp.src(paths.icon).pipe(gulp.dest(paths.dest));
+});
+
+gulp.task('default', ['compile', 'move:css', 'move:views', 'move:icon']);
