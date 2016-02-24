@@ -11,8 +11,3 @@ Clone the repository to your local directory and run the following command.
 
 npm install
 ```
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
