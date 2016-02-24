@@ -10,8 +10,7 @@ namespace app.controllers {
         constructor(private NationalRail: app.Interfaces.INationalRailService, private $interval: ng.IIntervalService, private $routeParams: Interfaces.IParameters, private toastr: Toastr) {
             this.city = $routeParams.City;
             this.GetData();
-            this.$interval(() => 
-            {
+            this.$interval(() => {
                 this.GetData();
             }, 60000);
         }
@@ -24,11 +23,11 @@ namespace app.controllers {
             }
         };
 
-        GetData(): void {           
+        GetData(): void {
             this.NationalRail.getDepartures(this.city).then((data: app.Interfaces.IQueryResult) => {
                 this.departures = data;
             }, this.onError);
-            
+
             this.NationalRail.getArrivals(this.city).then((data: app.Interfaces.IQueryResult) => {
                 this.arrivals = data;
             }, this.onError);
