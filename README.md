@@ -1,4 +1,4 @@
-# README #
+# National Rail Viewer #
 
 In order to install the application you need to ensure you have npm installed.
 
