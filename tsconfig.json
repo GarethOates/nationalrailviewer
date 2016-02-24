@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "noImplicitAny": true,
+        "outFile": "output.js",
+        "removeComments": true
+    },
+    
+    "exclude": [
+        "node_modules"
+    ]
+}

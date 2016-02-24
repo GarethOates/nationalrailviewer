@@ -1,45 +1,37 @@
 var gulp = require('gulp');
 var uglify = require('gulp-uglify');
-var concat = require('gulp-concat');
-var del = require('del');
-//var ts = require('gulp-typescript');
+var cssnano = require('gulp-cssnano');
+var ts = require('gulp-typescript');
+var htmlmin = require('gulp-htmlmin');
 
 var paths = {
-    scripts: 'src/**/*.js',
+    scripts: 'src/app/**/*.ts',
     css: 'src/content/*.css',
-    views: 'src/app/NationalRailViewerApp/views/*.html',
-    dest: 'build',
-    destViews: 'build/views',
-}
+    html: 'src/content/*.html',
+    icon: '*.ico',
+    dest: 'public'
+};
 
-/*gulp.task('transpile:typescript', function() {
-    return gulp.src(paths.typescripts)
-            .pipe(ts(), {
-                noImplicitAny: true,
-                target: 'ES5'
-             })
-            .pipe(gulp.dest(paths.destjs));
-})*/
-
-gulp.task('move:css', ['clean:build'], function () {
-    return gulp.src(paths.css).pipe(gulp.dest(paths.dest));
-})
-
-gulp.task('move:views', ['clean:build'], function() {
-    return gulp.src(paths.views).pipe(gulp.dest(paths.destViews));
-})
-
-gulp.task('clean:build', function () {
-    return del.sync(paths.dest);
-})
-
-gulp.task('minify', ['move:css', 'move:views'], function () {
+gulp.task('compile', function () {
     return gulp.src(paths.scripts)
-        .pipe(concat('nationalrailviewer.min.js'))
-        .pipe(uglify('nationalrailviewer.min.js', {
-            mangle: true,
-        }))
+        .pipe(ts({
+            "target": "es5",
+            "noImplicitAny": true,
+            "outFile": "output.js"
+        })).pipe(uglify("output.js"))
         .pipe(gulp.dest(paths.dest));
 });
 
-gulp.task('default', ['clean:build', 'move:css', 'move:views', 'minify']);
+gulp.task('move:css', function () {
+    return gulp.src(paths.css).pipe(cssnano()).pipe(gulp.dest(paths.dest));
+});
+
+gulp.task('move:views', function () {
+    return gulp.src(paths.html).pipe(htmlmin({ collapseWhitespace: true })).pipe(gulp.dest(paths.dest));
+});
+
+gulp.task('move:icon', function () {
+    return gulp.src(paths.icon).pipe(gulp.dest(paths.dest));
+});
+
+gulp.task('default', ['compile', 'move:css', 'move:views', 'move:icon']);
