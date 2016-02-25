@@ -40,4 +40,4 @@ gulp.task('watch', function () {
     gulp.watch(paths.html, ['move:views']);
 });
 
-gulp.task('default', ['watch', 'compile', 'move:css', 'move:views', 'move:icon']);
+gulp.task('default', ['compile', 'move:css', 'move:views', 'move:icon']);
