@@ -1,3 +1,3 @@
 namespace app {
-    angular.module("nationalRailViewer", ["ngRoute", "toastr", "ngAnimate"]);
+    angular.module("nationalRailViewer", ["ngRoute"]);
 }

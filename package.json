@@ -16,11 +16,7 @@
   "author": "Gareth Oates",
   "license": "ISC",
   "homepage": "https://bitbucket.org/Goatie/nationalrailviewer#readme",
-  "dependencies": {
-    "angular-animate": "^1.5.0",
-    "angular-toastr": "^1.7.0",
-    "toastr": "^2.1.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-cssnano": "^2.1.1",

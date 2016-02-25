@@ -34,4 +34,10 @@ gulp.task('move:icon', function () {
     return gulp.src(paths.icon).pipe(gulp.dest(paths.dest));
 });
 
-gulp.task('default', ['compile', 'move:css', 'move:views', 'move:icon']);
+gulp.task('watch', function () {
+    gulp.watch(paths.scripts, ['compile']);
+    gulp.watch(paths.css, ['move:css']);
+    gulp.watch(paths.html, ['move:views']);
+});
+
+gulp.task('default', ['watch', 'compile', 'move:css', 'move:views', 'move:icon']);
