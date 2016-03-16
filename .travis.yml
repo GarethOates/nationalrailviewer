@@ -5,6 +5,7 @@ before_script:
   - npm install -g gulp
   - chmod +x scripts/deploy.sh
 script: gulp
+after_success: deploy
 deploy: 
 skip_cleanup: true
 provider: script
