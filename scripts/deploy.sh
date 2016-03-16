@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [[ $TRAVIS_BRANCH == 'master' ]] ; then
     cd public
     git init
