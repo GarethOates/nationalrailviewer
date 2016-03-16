@@ -5,5 +5,8 @@ before_script:
   - npm install -g gulp
 script: gulp
 deploy: 
-provider: azure_web_apps
-quiet: true
+skip_cleanup: true
+provider: script
+script: scripts/deploy.sh
+on:
+    branch: master
