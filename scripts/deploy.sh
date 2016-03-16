@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ $TRAVIS_BRANCH == 'master' ]] ; then
-    cd public
+    cd ../public
     git init
 
     git config user.name "Travis CI"
