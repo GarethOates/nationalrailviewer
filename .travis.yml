@@ -4,11 +4,10 @@ node_js:
 before_script:
   - npm install -g gulp
   - chmod +x scripts/deploy.sh
-script: gulp
-after_success: deploy
+script: 
+- gulp
+- scripts/deploy.sh
 deploy: 
 skip_cleanup: true
-provider: script
-script: scripts/deploy.sh
 on:
     branch: master
