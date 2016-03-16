@@ -3,12 +3,11 @@ node_js:
   - "5"
 before_script:
   - npm install -g gulp
+  - chmod +x scripts/deploy.sh
 script: gulp
 deploy: 
 skip_cleanup: true
 provider: script
-before_script:
-   - chmod +x scripts/deploy.sh
 script: scripts/deploy.sh
 on:
     branch: master
