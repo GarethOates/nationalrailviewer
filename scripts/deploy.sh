@@ -1,10 +1,7 @@
 #!/bin/bash
 
 if [[ $TRAVIS_BRANCH == 'master' ]] ; then
-    echo $PWD
-    cd public
     git init
-
     git config user.name "Travis CI"
     git config user.email "goatie@gmail.com"
 
