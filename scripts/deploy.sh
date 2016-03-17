@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ $TRAVIS_BRANCH == 'master' ]] ; then
-    ls
+    echo $PWD
     cd public
     git init
 
