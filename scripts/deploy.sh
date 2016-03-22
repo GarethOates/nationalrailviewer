@@ -3,7 +3,6 @@
 if [[ $TRAVIS_BRANCH == 'master' ]] ; then
     echo $PWD
     git init
-
     git config user.name "Travis CI"
     git config user.email "goatie@gmail.com"
 
