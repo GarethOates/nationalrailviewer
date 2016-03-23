@@ -6,6 +6,8 @@ before_script:
 script: 
 - gulp
 - scripts/deploy.sh
+notifications:
+  slack: nationalrailviewer:gFFj43AQ9ylarHMZzY4cfljZ
 deploy: 
 skip_cleanup: true
 on:
