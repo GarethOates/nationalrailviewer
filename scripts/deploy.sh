@@ -12,8 +12,8 @@ if [[ $TRAVIS_BRANCH == 'master' ]] ; then
 
     # We redirect any output to
     # /dev/null to hide any sensitive credential data that might otherwise be exposed.
-    git push --force --quiet "https://goatie@$GIT_TARGET" master:master # > dev/null
-    GIT_PASSWORD
+    git push --force --quiet "https://$GIT_USER:$GIT_PASSWORD@$GIT_TARGET" master:master # > dev/null
+    
 else
     echo 'Invalid Branch.  You can only deploy from master.'
     exit 1
