@@ -31,5 +31,5 @@ http-server
 You can now visit the application in your browser.
 
 ```
-Naviate to http://localhost:8080.
+http://localhost:8080
 ```
