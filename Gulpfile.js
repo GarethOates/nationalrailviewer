@@ -7,6 +7,7 @@ var jasmine = require('gulp-jasmine');
 
 var paths = {
     scripts: 'src/app/**/*.ts',
+    libs: 'src/libs/**/*.*',
     css: 'src/content/*.css',
     html: 'src/content/*.html',
     icon: '*.ico',
@@ -35,6 +36,10 @@ gulp.task('move:icon', function() {
     return gulp.src(paths.icon).pipe(gulp.dest(paths.dest));
 });
 
+gulp.task('move:libs', function() {
+    return gulp.src(paths.libs).pipe(gulp.dest(paths.dest + "/libs"));
+});
+
 gulp.task('compile:tests', function() {
     gulp.src(paths.testsinput)
         .pipe(tsc({
@@ -55,4 +60,4 @@ gulp.task('watch', function() {
     gulp.watch(paths.testsinput, ['test']);
 });
 
-gulp.task('default', ['compile', 'move:css', 'move:views', 'move:icon', 'test']);
+gulp.task('default', ['compile', 'move:libs', 'move:css', 'move:views', 'move:icon', 'test']);
