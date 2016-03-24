@@ -12,16 +12,16 @@
             "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
         },
         "angularjs/angular.d.ts": {
-            "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
+            "commit": "a44529fcb1e1cdc0355e71c42a6048de99b57c34"
         },
         "jquery/jquery.d.ts": {
-            "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
-        },
-        "toastr/toastr.d.ts": {
-            "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
+            "commit": "a44529fcb1e1cdc0355e71c42a6048de99b57c34"
         },
         "jasmine/jasmine.d.ts": {
             "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
+        },
+        "angularjs/angular-mocks.d.ts": {
+            "commit": "a44529fcb1e1cdc0355e71c42a6048de99b57c34"
         }
     }
 }

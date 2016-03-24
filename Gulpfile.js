@@ -55,4 +55,4 @@ gulp.task('watch', function() {
     gulp.watch(paths.testsinput, ['test']);
 });
 
-gulp.task('default', ['compile', 'compile:tests', 'move:css', 'move:views', 'move:icon', 'test']);
+gulp.task('default', ['compile', 'move:css', 'move:views', 'move:icon', 'test']);
