@@ -28,4 +28,8 @@ Once you have installed the http-server, you can run the app by navigating to di
 http-server
 ```
 
-You can then visit the application in your browser by navigating to http://localhost:8080.
+You can now visit the application in your browser.
+
+```
+Naviate to http://localhost:8080.
+```
