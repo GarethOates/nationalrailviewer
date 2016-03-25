@@ -11,9 +11,9 @@ var paths = {
     css: 'src/content/*.css',
     html: 'src/content/*.html',
     icon: '*.ico',
-    tests: "spec/tests/*[sS]pec.js",
-    testsinput: 'spec/tests/*[sS]pec.ts',
-    testsoutput: 'spec/tests',
+    tests: "test/tests/*[sS]pec.js",
+    testsinput: 'test/tests/*[sS]pec.ts',
+    testsoutput: 'test/tests',
     dest: 'public'
 };
 
