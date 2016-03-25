@@ -20,10 +20,12 @@ namespace app.controllers {
         GetData(): void {
             this.NationalRail.getDepartures(this.city).then((data: app.Interfaces.IQueryResult) => {
                 this.departures = data;
+                this.error = null;
             }, () => { this.error = "Unable to load data for '" + this.city + "'"; });
 
             this.NationalRail.getArrivals(this.city).then((data: app.Interfaces.IQueryResult) => {
                 this.arrivals = data;
+                this.error = null;
             }, () => { this.error = "Unable to load data for '" + this.city + "'"; });
         }
     }

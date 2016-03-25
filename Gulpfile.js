@@ -56,6 +56,7 @@ gulp.task('test', ['compile:tests'], function() {
 gulp.task('watch', function() {
     gulp.watch(paths.scripts, ['compile']);
     gulp.watch(paths.css, ['move:css']);
+    gulp.watch(paths.libs, ['move:libs']);
     gulp.watch(paths.html, ['move:views']);
     gulp.watch(paths.testsinput, ['test']);
 });

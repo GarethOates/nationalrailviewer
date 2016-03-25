@@ -14,9 +14,9 @@
             <caption>Departures</caption>
             <thead>
                 <tr>
-                    <th class="col-md-2">From</th>
+                    <th class="col-md-2">Leaving From</th>
                     <th class="col-md-3">To</th>
-                    <th class="col-md-1">Departs</th>
+                    <th class="col-md-1">Departs {{ vm.city }}</th>
                     <th class="col-md-1">Estimated</th>
                     <th class="col-md-1">Platform</th>
                 </tr>
@@ -42,9 +42,9 @@
             <caption>Arrivals</caption>
             <thead>
                 <tr>
-                    <th class="col-md-2">From</th>
+                    <th class="col-md-2">Leaving From</th>
                     <th class="col-md-3">To</th>
-                    <th class="col-md-1">Arrives</th>
+                    <th class="col-md-1">Arrives in {{ vm.city }}</th>
                     <th class="col-md-1">Estimated</th>
                     <th class="col-md-1">Platform</th>
                 </tr>
