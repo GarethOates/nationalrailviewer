@@ -49,7 +49,7 @@ gulp.task('compile:tests', function() {
         })).pipe(gulp.dest(paths.testsoutput));
 });
 
-gulp.task('test', ['compile:tests'], function (done) {
+gulp.task('test', ['compile', 'compile:tests'], function (done) {
   new Server({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
