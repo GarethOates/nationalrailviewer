@@ -3,7 +3,7 @@ var uglify = require('gulp-uglify');
 var cssnano = require('gulp-cssnano');
 var tsc = require('gulp-typescript');
 var htmlmin = require('gulp-htmlmin');
-var jasmine = require('gulp-jasmine');
+var Server = require('karma').Server;
 
 var paths = {
     scripts: 'src/app/**/*.ts',
@@ -49,9 +49,11 @@ gulp.task('compile:tests', function() {
         })).pipe(gulp.dest(paths.testsoutput));
 });
 
-gulp.task('test', ['compile:tests'], function() {
-    gulp.src(paths.tests)
-        .pipe(jasmine());
+gulp.task('test', ['compile:tests'], function (done) {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done).start();
 });
 
 gulp.task('watch', function() {

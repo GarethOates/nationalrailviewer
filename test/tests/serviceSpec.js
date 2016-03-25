@@ -1,4 +1,4 @@
-describe("NationalRailService Service", function() {
+describe("NationalRailService Service", function () {
     var http;
     beforeEach(inject(function ($http) {
         http = $http;

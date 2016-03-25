@@ -10,6 +10,7 @@ describe("NationalRailService Service", function() {
     }));
 
     var Service: app.services.NationalRailService = new app.services.NationalRailService(http);
+
     it("Should have a function called getDepartures", () => {
         expect(Service.getDepartures).toBeDefined();
     });
