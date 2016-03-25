@@ -45,6 +45,7 @@ gulp.task('compile:tests', function() {
         .pipe(tsc({
             "target": "es5",
             "noImplicitAny": true,
+            "removeComments": true
         })).pipe(gulp.dest(paths.testsoutput));
 });
 
