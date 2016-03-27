@@ -16,7 +16,9 @@
   "author": "Gareth Oates",
   "license": "ISC",
   "homepage": "https://bitbucket.org/Goatie/nationalrailviewer#readme",
-  "dependencies": {},
+  "dependencies": {
+    "angular": "^1.5.3"
+  },
   "devDependencies": {
     "angular-mocks": "^1.5.3",
     "gulp": "^3.9.1",
@@ -25,6 +27,11 @@
     "gulp-jasmine": "^2.3.0",
     "gulp-typescript": "^2.11.0",
     "gulp-uglify": "^1.5.2",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-jasmine": "^0.3.8",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "phantomjs-prebuilt": "^2.1.7",
     "tsd": "^0.6.5"
   }
 }
