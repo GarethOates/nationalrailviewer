@@ -1,12 +1,11 @@
 <div class="col-md-12 col-lg-12 container">
     <h1>Live Departure & Arrival board for <strong>{{ vm.city }}</strong></h1>
+    <h3 class="well well-sm pull-left">{{ vm.time| date:'HH:mm:ss' }}</h3>
     <div>
-        <div class="success">Last Updated: {{ vm.departures.generatedAt | date: 'dd/MM/yyyy HH:mm:ss' }}</div>
-
         <div class="alert alert-danger" data-ng-show=vm.error>
             <span class="close" data-dismiss="alert">&times;</span>
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"> </span>
-            <span>Unable to load data for {{ vm.city }}</span> 
+            <span>Unable to load data for {{ vm.city }}</span>
         </div>
 
         <!-- <div class="col-md-6"> -->
@@ -14,9 +13,9 @@
             <caption>Departures</caption>
             <thead>
                 <tr>
-                    <th class="col-md-2">Leaving From</th>
-                    <th class="col-md-3">To</th>
-                    <th class="col-md-1">Departs {{ vm.city }}</th>
+                    <th class="col-md-2">Time</th>
+                    <th class="col-md-4">Leaving From</th>
+                    <th class="col-md-4">To</th>
                     <th class="col-md-1">Estimated</th>
                     <th class="col-md-1">Platform</th>
                 </tr>
@@ -26,9 +25,9 @@
                     <td colspan="5"><strong>No Departure Information Found</strong></td>
                 </tr>
                 <tr ng-repeat="services in vm.departures.trainServices">
+                    <td> {{ services.std }}</td>
                     <td> {{ services.origin[0].locationName }} ({{ services.origin[0].crs }}) </td>
                     <td> {{ services.destination[0].locationName }} ({{ services.destination[0].crs }}) </td>
-                    <td> {{ services.std }}</td>
                     <td ng-class="{'delayed':services.etd!='On time'}"> {{ services.etd }}</td>
                     <td> {{ services.platform }}</td>
                 </tr>
@@ -42,9 +41,9 @@
             <caption>Arrivals</caption>
             <thead>
                 <tr>
-                    <th class="col-md-2">Leaving From</th>
-                    <th class="col-md-3">To</th>
-                    <th class="col-md-1">Arrives in {{ vm.city }}</th>
+                    <th class="col-md-2">Time</th>
+                    <th class="col-md-4">Leaving From</th>
+                    <th class="col-md-4">To</th>
                     <th class="col-md-1">Estimated</th>
                     <th class="col-md-1">Platform</th>
                 </tr>
@@ -54,9 +53,9 @@
                     <td colspan="5"><strong>No Arrival Information Found</strong></td>
                 </tr>
                 <tr ng-repeat="sv in vm.arrivals.trainServices">
+                    <td> {{ sv.sta }}</td>
                     <td> {{ sv.origin[0].locationName }} ({{ sv.origin[0].crs }}) </td>
                     <td> {{ sv.destination[0].locationName }} ({{ sv.destination[0].crs }}) </td>
-                    <td> {{ sv.sta }}</td>
                     <td ng-class="{'delayed':sv.eta!='On time'}"> {{ sv.eta }}</td>
                     <td> {{ sv.platform }}</td>
                 </tr>
@@ -64,4 +63,5 @@
         </table>
         <!-- </div> -->
     </div>
+    <div class="margined well well-sm navbar navbar-fixed-bottom">Last Updated: {{ vm.departures.generatedAt | date: 'dd/MM/yyyy HH:mm:ss' }}</div>
 </div>

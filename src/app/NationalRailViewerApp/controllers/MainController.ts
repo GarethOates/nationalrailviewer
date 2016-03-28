@@ -7,6 +7,7 @@ namespace app.controllers {
         public departures: Interfaces.IQueryResult;
         public arrivals: Interfaces.IQueryResult;
         public error: string;
+        public time: number;
 
         static $inject: Array<string> = ['nationalRail', '$interval', '$routeParams'];
         constructor(private NationalRail: app.Interfaces.INationalRailService, private $interval: ng.IIntervalService, private $routeParams: Interfaces.IParameters) {
@@ -15,6 +16,9 @@ namespace app.controllers {
             this.$interval(() => {
                 this.GetData();
             }, 60000);
+            this.$interval(() => {
+                this.time = Date.now();
+            }, 1000);
         }
 
         GetData(): void {
