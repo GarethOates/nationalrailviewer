@@ -34,6 +34,9 @@ build/
 *.VisualState.xml
 TestResult.xml
 
+# Jasmine Specs Resultant JS Files
+test/tests/*.js
+
 # Build Results of an ATL Project
 [Dd]ebugPS/
 [Rr]eleasePS/
