@@ -11,7 +11,7 @@ var paths = {
     css: 'src/content/*.css',
     html: 'src/content/*.html',
     icon: '*.ico',
-    logos: '*.svg',
+    logos: 'src/content/*.svg',
     tests: "test/tests/*[sS]pec.js",
     testsinput: 'test/tests/*[sS]pec.ts',
     testsoutput: 'test/tests',
