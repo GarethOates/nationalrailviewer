@@ -11,6 +11,7 @@ var paths = {
     css: 'src/content/*.css',
     html: 'src/content/*.html',
     icon: '*.ico',
+    logos: '*.svg',
     tests: "test/tests/*[sS]pec.js",
     testsinput: 'test/tests/*[sS]pec.ts',
     testsoutput: 'test/tests',
@@ -34,6 +35,10 @@ gulp.task('move:views', function() {
 
 gulp.task('move:icon', function() {
     return gulp.src(paths.icon).pipe(gulp.dest(paths.dest));
+});
+
+gulp.task('move:logos', function() {
+    return gulp.src(paths.logos).pipe(gupl.dest(paths.dest));
 });
 
 gulp.task('move:libs', function() {
@@ -64,4 +69,4 @@ gulp.task('watch', function() {
     gulp.watch(paths.testsinput, ['test']);
 });
 
-gulp.task('default', ['compile', 'move:libs', 'move:css', 'move:views', 'move:icon', 'test']);
+gulp.task('default', ['compile', 'move:libs', 'move:css', 'move:views', 'move:logos', 'move:icon', 'test']);
