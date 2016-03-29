@@ -38,7 +38,7 @@ gulp.task('move:icon', function() {
 });
 
 gulp.task('move:logos', function() {
-    return gulp.src(paths.logos).pipe(gupl.dest(paths.dest));
+    return gulp.src(paths.logos).pipe(gulp.dest(paths.dest));
 });
 
 gulp.task('move:libs', function() {
