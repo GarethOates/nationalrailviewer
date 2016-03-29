@@ -5,10 +5,11 @@ before_script:
   - chmod +x scripts/deploy.sh
 script: 
 - gulp
-- scripts/deploy.sh
 notifications:
   slack: nationalrailviewer:gFFj43AQ9ylarHMZzY4cfljZ
 deploy: 
 skip_cleanup: true
 on:
     branch: master
+after_success:
+- scripts/deploy.sh
