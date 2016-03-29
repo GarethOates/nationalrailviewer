@@ -1,7 +1,7 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
 namespace app.controllers {
 
-    export class MainController {
+    export class MainController implements app.Interfaces.IMainController {
 
         public city: string;
         public departures: Interfaces.IQueryResult;

@@ -4,12 +4,13 @@
 /// <reference path="../../typings/app.d.ts" />
 describe("NationalRailService Service", function() {
     var http: ng.IHttpService;
+    var httpbackend: ng.IHttpBackendService;
 
     beforeEach(inject(function($http: ng.IHttpService) {
         http = $http;
     }));
 
-    var Service: app.services.NationalRailService = new app.services.NationalRailService(http);
+    var Service: app.Interfaces.INationalRailService = new app.services.NationalRailService(http);
 
     it("Should have a function called getDepartures", () => {
         expect(Service.getDepartures).toBeDefined();
